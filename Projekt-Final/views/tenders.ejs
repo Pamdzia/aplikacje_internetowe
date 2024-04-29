@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista Przetargów</title>
+  <link rel="stylesheet" href="/css/tenders.css">
+</head>
+<body>
+  <div class="navbar">
+    <a href="/">Strona główna</a>
+    <a href="/tenders">Lista przetargów</a>
+    <a href="/closed-tenders">Lista zakończonych przetargów</a>
+    <a href="/add-tender">Dodaj przetarg</a>
+  </div>
+  <div class="content">
+  <h1>Aktualnie trwające przetargi</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Lp.</th>
+        <th>Nazwa/Tytuł</th>
+        <th>Data rozpoczęcia</th>
+        <th>Data zakończenia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tenders.forEach((tender, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><a href="/tender/<%= tender.IDPrzetargu %>"><%= tender.Nazwa %></a></td>
+          <td><%= tender.DataRozpoczecia.toLocaleString() %></td>
+          <td><%= tender.DataZakonczenia.toLocaleString() %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

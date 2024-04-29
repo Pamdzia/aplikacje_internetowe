@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Dodaj Przetarg</title>
+  <link rel="stylesheet" href="/css/add-tender.css">
+</head>
+<body>
+  <div class="navbar">
+    <a href="/">Strona główna</a>
+    <a href="/tenders">Lista przetargów</a>
+    <a href="/closed-tenders">Lista zakończonych przetargów</a>
+    <a href="/add-tender">Dodaj przetarg</a>
+  </div>
+  <div class="content">
+    <h1>Dodaj przetarg</h1>
+    <form id="form" action="/add-tender" method="post">
+      <div class="custom-form-group">
+        <label for="nazwa">Nazwa Przedmiotu Przetargu:</label>
+        <input type="text" id="nazwa" name="nazwa" required placeholder="Przykładowa Nazwa Przetargu">
+      </div>
+    
+      <div class="custom-form-group">
+        <label for="instytucja">Instytucja Zamawiająca:</label>
+        <input type="text" id="instytucja" name="instytucja" required placeholder="Przykładowa Instytucja">
+      </div>
+    
+      <div class="custom-form-group">
+        <label for="opis">Opis Przedmiotu Przetargu:</label>
+        <textarea id="opis" name="opis" required placeholder="Przykładowy opis przedmiotu przetargu."></textarea>
+      </div>
+    
+      <div class="custom-form-group">
+        <label for="start">Data i Godzina Rozpoczęcia:</label>
+        <input type="datetime-local" id="start" name="start" required>
+      </div>
+    
+      <div class="custom-form-group">
+        <label for="koniec">Data i Godzina Zakończenia:</label>
+        <input type="datetime-local" id="koniec" name="koniec" required>
+      </div>
+    
+      <div class="custom-form-group">
+        <label for="maxWartosc">Maksymalna Wartość Zamówienia:</label>
+        <input type="number" id="maxWartosc" name="maxWartosc" step="0.01" required placeholder="50000">
+      </div>
+    
+      <button type="submit" class="custom-button">Dodaj Przetarg</button>
+    </form>  
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementById('start').setAttribute('min', today);
+
+      document.getElementById('form').addEventListener('submit', function (e) {
+        var start = new Date(document.getElementById('start').value);
+        var end = new Date(document.getElementById('koniec').value);
+    
+        if (start > end) {
+          e.preventDefault(); 
+          alert('Data zakończenia nie może być wcześniejsza niż data rozpoczęcia.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

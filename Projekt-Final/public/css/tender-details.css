@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 60px; 
+    background: rgb(191, 238, 234); 
+}
+.navbar {
+    overflow: hidden;
+    background-color: #005f73; 
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 0 10px; 
+}
+.navbar a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background-color: #b2dfdb; 
+}
+
+.content {
+    padding-top: 60px; 
+}
+nav ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+nav a {
+  text-decoration: none;
+  color: #333;
+}
+.tender-details {
+  background-color: #e0ffff; 
+  border-collapse: collapse;
+  width: 80%;
+  max-width: 800px;
+  margin: 2rem auto; 
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.tender-details h1, 
+.tender-details p {
+  margin: 0.5rem 0;
+}
+.tender-details button {
+  margin: 1rem 0;
+}
+.tender-details input[type=text],
+.tender-details input[type=number] {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  width: calc(100% - 1rem);
+  display: block;
+}
+.tender-details form {
+  margin-top: 1rem;
+}

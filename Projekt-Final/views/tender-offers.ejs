@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Oferty dla przetargu: <%= tender.Nazwa %></title>
+  <link rel="stylesheet" href="/css/tender-offers.css">
+</head>
+<body>
+
+<h1>Oferty dla przetargu: <%= tender.Nazwa %></h1>
+
+<p><a href="/closed-tenders">Powrót do listy zakończonych przetargów</a></p>
+
+<% if (offers.length > 0) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Nazwa składającego</th>
+        <th>Wartość oferty</th>
+        <th>Data złożenia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% offers.forEach(offer => { %>
+        <tr>
+          <td><%= offer.NazwaSkladajacego %></td>
+          <td><%= offer.WartoscOferty.toFixed(2) %></td>
+          <td><%= new Date(offer.DataZlozenia).toLocaleDateString() %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else if (allOffersExceedBudget) { %>
+  <p>Wszystkie oferty przekraczają budżet przetargu. Przetarg zakończył się bez rozstrzygnięcia.</p>
+<% } else { %>
+  <p>Brak ofert dla tego przetargu.</p>
+<% } %>
+
+</body>
+</html>

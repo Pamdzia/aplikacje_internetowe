@@ -1,0 +1,70 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(191, 238, 234); 
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #005f73; 
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .navbar a {
+    padding: 14px 20px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .navbar a:hover {
+    background-color: #b2dfdb; 
+  }
+
+  .content {
+    margin-top: 60px; 
+  }
+
+  .custom-form-group {
+    max-width: 90%;
+    margin: 10px auto;
+  }
+
+  .custom-form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .custom-form-group input,
+  .custom-form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .custom-button {
+    width: 90%;
+    padding: 10px;
+    background-color: #005f73;
+    color: white;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 600px) {
+    .custom-form-group input,
+    .custom-form-group textarea,
+    .custom-button {
+      width: 100%;
+    }
+  }

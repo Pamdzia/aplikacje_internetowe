@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Szczegóły przetargu</title>
+  <link rel="stylesheet" href="/css/tender-details.css">
+</head>
+<body>
+  <div class="navbar">
+    <a href="/">Strona główna</a>
+    <a href="/tenders">Lista przetargów</a>
+    <a href="/closed-tenders">Lista zakończonych przetargów</a>
+    <a href="/add-tender">Dodaj przetarg</a>
+  </div>
+      <div class="tender-details">
+        <h1>Szczegóły przetargu: <%= tender.Nazwa %></h1> <!--obiekt tender- przekazanie z serwera do szablonu-->
+        <p><strong>Opis:</strong> <%= tender.Opis %></p>
+        <p><strong>Nazwa instytucji:</strong> <%= tender.NazwaInstytucji %></p>
+  
+        <% if (new Date(tender.DataZakonczenia) > new Date()) { %>
+            <button id="showOfferForm">Złóż ofertę</button>
+          
+            <div id="offerForm" style="display: none;">
+              <form action="/submit-tender/<%= tender.IDPrzetargu %>" method="post">
+                <label for="bidderName">Nazwa składającego ofertę:</label>
+                <input type="text" id="bidderName" name="bidderName" required>
+                
+                <label for="bidValue">Wartość oferty:</label>
+                <input type="number" id="bidValue" name="bidValue" required min="1" step="any">
+                
+                <button type="submit">Potwierdź złożenie oferty</button>
+              </form>
+            </div>
+        <% } else { %>
+            <p>Przetarg został zakończony.</p>
+        <% } %>
+      </div>
+    <script>
+        document.getElementById('showOfferForm').addEventListener('click', function() {
+          document.getElementById('offerForm').style.display = 'block'; 
+          this.style.display = 'none'; 
+        });
+    </script>
+      
+</body>
+</html>
